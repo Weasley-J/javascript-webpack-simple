@@ -6,8 +6,23 @@ module.exports = {
     output: {
         filename: 'index.js',
     },
-    module: {},
-    devServer: {},
+    module: {
+        rules: [
+            {
+                test: /\.(?:js|mjs|cjs)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', {targets: "defaults"}]
+                        ],
+                        plugins: ['@babel/plugin-proposal-class-properties']
+                    }
+                }
+            }
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",
@@ -17,7 +32,7 @@ module.exports = {
                 {from: "./static", to: "static"}
             ]
         })
-    ]
+    ],
 }
 
 
