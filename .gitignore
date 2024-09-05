@@ -183,5 +183,4 @@ dist
 *.code-workspace
 
 .fastRequest
-.idea
-/.idea/
+.idea/
